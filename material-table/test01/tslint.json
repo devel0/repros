@@ -1,0 +1,31 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-react"
+    ],
+    "rules": {
+        "typedef-whitespace": false,
+        "no-empty": false,
+        "whitespace": false,
+        "trailing-comma": false,
+//        "member-ordering": false,
+        "max-classes-per-file": false,
+        "no-trailing-whitespace": false,
+        "jsx-no-multiline-js": false,
+        "max-line-length": false,
+        "no-console": false,
+        "object-literal-sort-keys": false,
+        "comment-format": false,
+        "ordered-imports": false,
+        "no-submodule-imports": false,
+        "no-implicit-dependencies": false
+    },
+    "linterOptions": {
+        "exclude": [
+            "config/**/*.js",
+            "node_modules/**/*.ts",
+            "coverage/lcov-report/*.js",
+            "src/api-autogen/**/*.ts"
+        ]
+    }
+}
