@@ -1,22 +1,34 @@
 import React from "react";
-import { Grid, TextField } from "@material-ui/core";
+import { Grid, TextField, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails } from "@material-ui/core";
+import MaterialTable, { Column } from "material-table";
 
 interface IState {
     text: string;
-    speed: string;
+    colRenderCount: number;
+}
+
+interface IData {
+    val: number;
 }
 
 export default class App extends React.Component<{}, IState> {
-    
-    private lastDigit?: number;
+
+    private colRenderCountField: number = 0;
+    private data: IData[];
 
     constructor(props: {}) {
         super(props);
 
         this.state = {
             text: "",
-            speed: "",
+            colRenderCount: 0,
         }
+
+        this.data = [
+            { val: 0 },
+            { val: 1 },
+            { val: 2 },
+        ];
     }
 
     public render() {
@@ -32,27 +44,30 @@ export default class App extends React.Component<{}, IState> {
                 </Grid>
 
                 <Grid item={true}>
-                    digit speed (ms) : {this.state.speed}
+                    column render count : {this.state.colRenderCount}
+                </Grid>
+
+                <Grid item={true}>
+
+                    <MaterialTable
+                        data={this.data}
+                        columns={[
+                            { field: "val", render: this.renderCol },
+                        ]} />
+
                 </Grid>
 
             </Grid>
         );
     }
 
+    private renderCol = (rowData: IData) => {
+        ++this.colRenderCountField;
+        return rowData.val;
+    }
+
     private onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({ text: e.target.value });
-
-        const nowTime = new Date().getTime();
-
-        let diff = 0;
-
-        if (this.lastDigit) {
-            diff = nowTime - this.lastDigit;
-        }
-
-        this.setState({ speed: String(diff) });        
-
-        this.lastDigit = nowTime;
+        this.setState({ text: e.target.value, colRenderCount: this.colRenderCountField });
     }
 
 }
