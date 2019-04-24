@@ -1,0 +1,85 @@
+{
+  "name": "material-table",
+  "version": "1.32.0",
+  "description": "Datatable for React based on https://material-ui.com/api/table/ with additional features",
+  "main": "dist/material-table.js",
+  "types": "index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "build": "babel src --out-dir dist",
+    "copy": "robocopy dist docs/node_modules/material-table/dist",
+    "lint": "eslint src/** && tsc --noEmit --lib es6,dom --skipLibCheck index.d.ts",
+    "lint:fix": "eslint src/** --fix",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbrn/material-table.git"
+  },
+  "keywords": [
+    "react",
+    "material-ui",
+    "material",
+    "datatable",
+    "table"
+  ],
+  "author": "Mehmet Baran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mbrn/material-table/issues"
+  },
+  "homepage": "https://github.com/mbrn/material-table#readme",
+  "devDependencies": {
+    "@babel/cli": "7.1.2",
+    "@babel/plugin-proposal-class-properties": "7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0",
+    "@babel/plugin-transform-runtime": "7.1.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "7.0.0",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "^8.0.4",
+    "buble": "0.19.3",
+    "docz": "0.13.7",
+    "docz-theme-default": "0.13.7",
+    "eslint": "5.7.0",
+    "eslint-config-defaults": "9.0.0",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "7.0.1",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-standard": "4.0.0",
+    "husky": "^1.2.0",
+    "react-hot-loader": "^4.3.12",
+    "typescript": "^3.2.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.2"
+  },
+  "dependencies": {
+    "@date-io/date-fns": "^1.1.0",
+    "@material-ui/core": "^3.9.3",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.0.0-alpha.27",
+    "debounce": "^1.2.0",
+    "filefy": "0.1.9",
+    "material-ui-pickers": "2.2.4",
+    "prop-types": "^15.6.2",
+    "react-beautiful-dnd": "10.0.4",
+    "react-double-scrollbar": "0.0.15"
+  }
+}

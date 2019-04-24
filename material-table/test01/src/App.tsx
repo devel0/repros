@@ -4,7 +4,6 @@ import MaterialTable, { Column } from "material-table";
 
 interface IState {
     text: string;
-    colRenderCount: number;
     dataAge: number;
 }
 
@@ -14,16 +13,16 @@ interface IData {
 
 export default class App extends React.Component<{}, IState> {
 
-    private colRenderCountField: number = 0;
     private data: IData[];
+    private spanRef: React.RefObject<HTMLInputElement>;
+    private renderColCnt: number = 0;
 
     constructor(props: {}) {
         super(props);
 
         this.state = {
             text: "",
-            colRenderCount: 0,
-            dataAge: 0,
+            dataAge: -1,
         }
 
         this.data = [
@@ -31,6 +30,8 @@ export default class App extends React.Component<{}, IState> {
             { val: 1 },
             { val: 2 },
         ];
+
+        this.spanRef = React.createRef();
     }
 
     public render() {
@@ -48,13 +49,13 @@ export default class App extends React.Component<{}, IState> {
 
                 <Grid item={true}>
                     <Button color="primary" variant="contained" onClick={this.addData}>data add</Button>
-                
+
                     <Button color="default" variant="contained" onClick={this.incrementAge}>age increment</Button>
                 </Grid>
 
                 <Grid item={true}>
-                    RENDER (column) : {this.state.colRenderCount} |
-                    AGE (data) : {this.state.colRenderCount}
+                    Render (col) : <TextField disabled={true} inputRef={this.spanRef} />
+                    AGE (data) : {this.state.dataAge}
                 </Grid>
 
                 <Grid item={true}>
@@ -73,20 +74,30 @@ export default class App extends React.Component<{}, IState> {
     }
 
     private addData = () => {
-        this.data.push({ val: this.data.length });        
+        this.data.push({ val: this.data.length });
     }
 
     private incrementAge = () => {
-        this.setState({ dataAge: this.state.dataAge + 1 });
+        if (this.state.dataAge === undefined) {
+            this.setState({ dataAge: 0 });
+        } else {
+            this.setState({ dataAge: this.state.dataAge + 1 });
+        }
     }
 
     private renderCol = (rowData: IData) => {
-        ++this.colRenderCountField;
+        ++this.renderColCnt;        
+        
+        const q = document.getElementById("rendercnt");
+        if (q) {
+            q.innerText = String(this.renderColCnt);
+        }        
+
         return rowData.val;
     }
 
     private onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({ text: e.target.value, colRenderCount: this.colRenderCountField });
+        this.setState({ text: e.target.value });
     }
 
 }
