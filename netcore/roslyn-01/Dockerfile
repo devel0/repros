@@ -13,7 +13,7 @@ COPY . .
 RUN dotnet --info
 RUN dotnet build "./analyzer/analyzer.csproj" -c Release -o /app
 
-FROM mcr.microsoft.com/dotnet/core/runtime:3.0 AS final
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS final
 
 WORKDIR /app
 
