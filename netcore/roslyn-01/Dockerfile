@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0.100-preview9 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
 
 WORKDIR /src
 
@@ -10,9 +10,10 @@ RUN dotnet restore -v n "./test/test.csproj"
 
 COPY . .
 
+RUN dotnet --info
 RUN dotnet build "./analyzer/analyzer.csproj" -c Release -o /app
 
-FROM mcr.microsoft.com/dotnet/core/runtime:3.0.0-preview9 AS final
+FROM mcr.microsoft.com/dotnet/core/runtime:3.0 AS final
 
 WORKDIR /app
 
