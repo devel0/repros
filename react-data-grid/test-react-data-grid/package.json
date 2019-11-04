@@ -12,7 +12,6 @@
     "react-data-grid": "^6.1.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
-    "react-spreadsheet-grid": "^1.4.3",
     "typescript": "3.6.4"
   },
   "scripts": {
