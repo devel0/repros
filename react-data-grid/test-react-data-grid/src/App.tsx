@@ -38,8 +38,8 @@ export default function App() {
 
   return <div>    
     <ReactDataGrid
-      minWidth={size.width! - 50}
-      minHeight={size.height! - 50}
+      minWidth={1800}
+      minHeight={900}
       columns={columns}
       rowGetter={i => rrows[i]}
       rowsCount={rrows.length}
