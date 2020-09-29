@@ -11,8 +11,8 @@
       <SubType>Designer</SubType>
     </AvaloniaResource>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.0-preview2" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.0-preview2" />
+  <ItemGroup><!-- nuget list -Source "https://www.myget.org/F/avalonia-ci/api/v2" -PreRelease -->
+    <PackageReference Include="Avalonia" Version="0.10.999-cibuild0010986-beta"/>
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0010986-beta"/>
   </ItemGroup>
 </Project>
