@@ -1131,6 +1131,11 @@ GenF1.menu.upload_method.swdMethod.upload.protocol=0
 GenF1.menu.upload_method.swdMethod.upload.options=-g
 GenF1.menu.upload_method.swdMethod.upload.tool=stm32CubeProg
 
+GenF1.menu.upload_method.swdMethod2=STM32CubeProgrammer (SWD) SN54FF6B066689484819391767
+GenF1.menu.upload_method.swdMethod2.upload.protocol=SWDSN54FF6B066689484819391767
+GenF1.menu.upload_method.swdMethod2.upload.options=-g
+GenF1.menu.upload_method.swdMethod2.upload.tool=stm32CubeProg
+
 GenF1.menu.upload_method.serialMethod=STM32CubeProgrammer (Serial)
 GenF1.menu.upload_method.serialMethod.upload.protocol=1
 GenF1.menu.upload_method.serialMethod.upload.options={serial.port.file} -s
