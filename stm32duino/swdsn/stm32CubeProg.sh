@@ -6,6 +6,7 @@ ERASE=""
 MODE=""
 PORT=""
 OPTS=""
+SWDSN=""
 
 ###############################################################################
 ## Help function
@@ -58,12 +59,21 @@ fi
 # Parse options
 PROTOCOL=$1
 FILEPATH=$2
+
+PORTOPT=""
+if [[ $PROTOCOL =~ SWDSN.* ]]; then
+        PORTOPT="sn=${PROTOCOL:5}"
+        echo "searching for SWD $PORTOPT"
+        PROTOCOL=0
+fi
+
 # Protocol $1
 # 1x: Erase all sectors
-if [ "$1" -ge 10 ]; then
+if [ "$PROTOCOL" -ge 10 ]; then
   ERASE="yes"
-  PROTOCOL=$(($1 - 10))
+  PROTOCOL=$(($PROTOCOL - 10))
 fi
+
 # Protocol $1
 # 0: SWD
 # 1: Serial
@@ -96,6 +106,6 @@ if [ $# -gt 0 ]; then
   OPTS="$*"
 fi
 
-${STM32CP_CLI} -c port=${PORT} ${MODE} ${ERASE:+"-e all"} -q -d "${FILEPATH}" ${ADDRESS} "${OPTS}"
+${STM32CP_CLI} -c port=${PORT} ${PORTOPT} ${MODE} ${ERASE:+"-e all"} -q -d "${FILEPATH}" ${ADDRESS} "${OPTS}"
 
 exit $?
