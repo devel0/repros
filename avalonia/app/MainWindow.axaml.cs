@@ -36,7 +36,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             if (changed)
             {
                 _Value = value;
-                OnPropertyChanged();
+                Dispatcher.UIThread.Post(() => OnPropertyChanged());
             }
         }
     }
@@ -57,11 +57,11 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         base.Render(context);
 
-        // NOT WORKING
-        // ++Value;
+        // WORKING (post onpropchanged)
+        ++Value;
 
         // WORKING
-        Dispatcher.UIThread.Post(() => ++Value);
+        //Dispatcher.UIThread.Post(() => ++Value);
 
         Debug.WriteLine($"Value:{Value}");
     }
