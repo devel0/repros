@@ -8,7 +8,7 @@
     Title="app">
 
     <StackPanel>
-        <TextBlock Text="Mouse move to increment value, if not try resize window"/>
+        <TextBlock Text="Mouse move to increment value"/>
         
         <TextBlock Text="{Binding #uc.Value}" />
     </StackPanel>
