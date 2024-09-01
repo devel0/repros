@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Box, createTheme, CssBaseline, ThemeProvider, Typography } from '@mui/material';
-import { HorizontalTicker } from 'react-infinite-ticker';
 import { blue, green, grey, red } from '@mui/material/colors';
 import { useTimeout } from 'usehooks-ts';
+import { HorizontalTicker } from './lib';
 
 const SEC_PER_CHAR = 0.1
 const shortText = 'Some'
