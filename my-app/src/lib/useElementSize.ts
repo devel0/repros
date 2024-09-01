@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-function useResize(callback: () => void): void {
+function useResize(element: React.RefObject<HTMLDivElement>, callback: () => void): void {
   const callbackRef = useRef(callback);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ function useResize(callback: () => void): void {
       window.removeEventListener("resize", onResize);
     };
   }, []);
+
 }
 
 export function useElementSize(element: React.RefObject<HTMLDivElement>): {
@@ -29,7 +30,7 @@ export function useElementSize(element: React.RefObject<HTMLDivElement>): {
   const [width, setWidth] = useState<number>();
   const [height, setHeight] = useState<number>();
 
-  useResize(() => {
+  const updateSizes = (element: React.RefObject<HTMLDivElement>) => {
     setWidth((previousWidth) => {
       const nextWidth = element.current?.getBoundingClientRect().width;
       return previousWidth !== nextWidth ? nextWidth : previousWidth;
@@ -38,7 +39,26 @@ export function useElementSize(element: React.RefObject<HTMLDivElement>): {
       const nextHeight = element.current?.getBoundingClientRect().height;
       return previousHeight !== nextHeight ? nextHeight : previousHeight;
     });
-  });
+  }
+
+  useResize(element, () => updateSizes(element));
+
+  const myObserver = new ResizeObserver(
+    (entries: ResizeObserverEntry[], observer: ResizeObserver) => {
+      updateSizes(element)
+    });
+
+  useEffect(() => {
+    if (!(element.current)) return
+
+    const el = element.current
+
+    myObserver.observe(el)
+    
+    return () => {      
+      myObserver.unobserve(el)
+    }
+  }, [element])
 
   return { width, height };
 }
