@@ -4,13 +4,19 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
             "type": "chrome",
             "request": "launch",
             "name": "REACT",
             "url": "http://localhost:5173",
             "webRoot": "${workspaceFolder}/sample-react",            
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "ANGULAR",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}/sample-ng",            
         }
     ]
 }
