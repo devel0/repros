@@ -15,7 +15,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "ANGULAR",
-            "url": "http://localhost:4200",
+            "url": "http://localhost:4200/app",
             "webRoot": "${workspaceFolder}/sample-ng",            
         }
     ]

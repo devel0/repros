@@ -12,7 +12,8 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
-          "options": {
+          "options": {                  
+            "baseHref": "/app/",            
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -47,18 +48,18 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true              
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular/build:dev-server",                                        
           "configurations": {
             "production": {
               "buildTarget": "sample-ng:build:production"
             },
-            "development": {
+            "development": {                                          
               "buildTarget": "sample-ng:build:development"
             }
           },
