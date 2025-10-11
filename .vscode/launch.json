@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "REACT",
-            "url": "http://localhost:5173",
+            "url": "http://localhost:5173/app",
             "webRoot": "${workspaceFolder}/sample-react",            
         },
         {
