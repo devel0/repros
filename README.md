@@ -6,17 +6,6 @@ this repro want to show how breakpoint not working in angular frontend while it 
 
 ## quick start
 
-- test angular
-
-```sh
-cd sample-ng
-code .
-pnpm i
-pnpm run start
-```
-
-hit F5 to start and get breakpoint
-
 - test react
 
 ```sh
@@ -27,6 +16,51 @@ pnpm run dev
 ```
 
 hit F5 to start and get breakpoint
+
+- test angular
+
+```sh
+cd sample-ng
+code .
+pnpm i
+pnpm run start
+```
+
+hit F5 to start and get breakpoint not working
+
+## repro description
+
+### case react
+
+in the case of react start the dev
+
+![alt text](image.png)
+
+then from vscode start debug REACT
+
+![alt text](image-1.png)
+
+and this breakpoint can be hitted
+
+![alt text](image-2.png)
+
+### case angular
+
+in the case of anguar start
+
+![alt text](image-3.png)
+
+then from vscode start debug ANGULAR
+
+![alt text](image-4.png)
+
+and this breakpoint can't be hitted
+
+![alt text](image-5.png)
+
+this is what vscode says about breakpoint diagnostic
+
+![alt text](image-6.png)
 
 ## how this was built
 
